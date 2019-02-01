@@ -136,7 +136,7 @@ clear
 }
 
 function update_config() {
-  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
+#  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
 rpcport=$RPC_PORT
 rpcallowip=127.0.0.1
