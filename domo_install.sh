@@ -136,7 +136,7 @@ clear
 }
 
 function update_config() {
-#  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
+sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
 rpcport=$RPC_PORT
 rpcallowip=127.0.0.1
@@ -283,19 +283,16 @@ function duplicate_node() {
     echo "  Example"
     echo "  Enter 1  then COIN_NAME='Domo_1'"
     read num
-    COIN_NAME=$COIN_NAME"_"$num
-    NEWCONFIGFOLDER=$CONFIGFOLDER"_"$num
-    cp -r -p $CONFIGFOLDER $NEWCONFIGFOLDER
-    CONFIGFOLDER=$CONFIGFOLDER"_"$num
+    COIN_NAME+="_$num"
+    cp -r -p "$CONFIGFOLDER" "$CONFIGFOLDER"+"_$num"
+    CONFIGFOLDER+="_$num"
     get_ip
     COIN_PORT=$(($COIN_PORT+$num))
     RPC_PORT=$(($RPC_PORT+$num))
     create_key
     update_config
-    enable_firewall
-    configure_systemd
-    systemctl start $COIN_NAME.service
-    systemctl enable $COIN_NAME.service >/dev/null 2>&1
+    #enable_firewall
+    #configure_systemd
     important_information
 }
 
