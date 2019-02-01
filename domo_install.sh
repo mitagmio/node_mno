@@ -292,8 +292,10 @@ function duplicate_node() {
     create_key
     update_config
     enable_firewall
-    important_information
     configure_systemd
+    systemctl start $COIN_NAME.service
+    systemctl enable $COIN_NAME.service >/dev/null 2>&1
+    important_information
 }
 
 
