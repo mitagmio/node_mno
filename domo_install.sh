@@ -291,8 +291,8 @@ function duplicate_node() {
     RPC_PORT=$(($RPC_PORT+$num))
     create_key
     update_config
-    #enable_firewall
-    #configure_systemd
+    enable_firewall
+    configure_systemd
     important_information
 }
 
