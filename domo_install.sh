@@ -284,7 +284,7 @@ function duplicate_node() {
     echo "  Enter 1  then COIN_NAME='Domo_1'"
     read num
     COIN_NAME+="_$num"
-    cp -r -p "$CONFIGFOLDER" "$CONFIGFOLDER"+"_$num"
+    cp -r -p "$CONFIGFOLDER" "$CONFIGFOLDER""_$num"
     CONFIGFOLDER+="_$num"
     get_ip
     COIN_PORT=$(($COIN_PORT+$num))
